@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>RIU | Question Assignment Reminder</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+        img {
+            width: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            object-fit: contain;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            color: #2d387b;
+        }
+
+        a img {
+            border: none;
+        }
+
+        td,
+        h1,
+        h2,
+        h3 {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+            font-size: 16px;
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            color: #666;
+            background: #fff;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        @media screen {
+
+            td,
+            h1,
+            h2,
+            h3 {
+                font-family: 'Nunito', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            table[class="w320"] {
+                width: 395px !important;
+            }
+
+            .headline {
+                font-size: 20px !important;
+                padding: 0 20px !important;
+            }
+        }
+
+        .name {
+            background-color: #3F88A5;
+        }
+
+        .name:hover {
+            background-color: #4686a2;
+        }
+
+        .headline {
+            color: #444;
+            font-size: 36px;
+            text-align: center;
+            font-weight: 700;
+            padding: 0 20px;
+        }
+        
+        .question-item {
+            padding: 10px;
+            margin: 10px 20px;
+            background-color: #f8f8f8;
+            border-left: 3px solid #3F88A5;
+            border-radius: 2px;
+        }
+        
+        .question-title {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .question-due {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+    
+</head>
+
+<body class="body" style="margin: 0 0; display: block; background: #ffffff; -webkit-text-size-adjust: none">
+    <div id="mailsub" class="notification">
+        <table cellpadding="0" cellspacing="0" style="margin: 30px auto; border: 1px solid #efefef; width: 550px;">
+            <tbody>
+                <tr>
+                    <td style="padding: 20px 40px;">
+                        <img alt="RIU logo" height="100" src="https://riu-bucket.s3.ap-south-1.amazonaws.com/uploads/Social%2012.pngSocial%2012.png" width="400">
+                        <div class="headline">
+                            Question Reminder
+                        </div>
+                        <div style="color:#444; font-weight: 400; text-align: center; padding: 0 20px; ">
+                            You have pending questions that require your attention.
+                        </div>
+                        <p style="color:#444; font-weight: 400; text-align: justify;padding: 0 20px; ">Dear {{recipientName}},</p>
+                    
+                        <p style="color:#444; font-weight: 400; padding: 0 20px; ">
+                            {{pass}}
+                        </p>
+                        
+                        <p style="color:#444; font-weight: 400; padding: 0 20px; ">
+                            The following questions have been assigned to you:
+                        </p>
+                        
+                        {{#each url}}
+                        <div class="question-item">
+                            <div class="question-title">{{this}}</div>
+                        </div>
+                        {{/each}}
+                        
+                   >
+                        </div>
+                        
+                        <p style="color:#444; font-weight: 400; text-align: justify; padding: 20px 20px 0;">
+                            If you have any questions or need assistance, please don't hesitate to reach out to our support team. We're here to help you complete your assigned tasks.
+                        </p>
+                        
+                     
+                        
+                        <p style="color:#444; font-weight: 400; text-align: justify; padding: 0 20px; margin: 20px 0 0;">Best Regards,</p>
+                        <p style="color:#444; font-weight: 400; text-align: justify; padding: 0 20px; margin: 0;">RIU Team</p>
+                        <p style="color:#444; font-weight: 400; text-align: justify; padding: 0 20px; margin: 0;">
+                            <a href="mailto:contact@riu.ai" title="Contact Us" style="color:#2d387b !important;">contact@riu.ai</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

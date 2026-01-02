@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>ESGRI</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+        img {
+            max-width: 218px;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            object-fit: contain;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            color: #2d387b;
+        }
+
+        a img {
+            border: none;
+        }
+
+        td,
+        h1,
+        h2,
+        h3 {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+            width: 100%;
+            height: 100%;
+            color: #666;
+            background: #fff;
+            font-size: 16px;
+            height: 100vh;
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .headig_line{
+            color: #444; 
+            font-size: 30px; 
+            text-align: center; 
+            font-weight: 700;
+            padding: 0 20px;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        .force-full-width {
+            width: 100% !important;
+        }
+
+        @media screen {
+
+            td,
+            h1,
+            h2,
+            h3 {
+                font-family: 'Nunito', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            table[class="w320"] {
+                width: 440px !important;
+            }
+.headig_line{
+    font-size : 20px;
+padding : 0 20px;
+}
+        }
+
+        .name {
+            background-color: #2d387b;
+        }
+
+        .name:hover {
+            background-color: #49bfae;
+        }
+    </style>
+
+</head>
+
+<body bgcolor="#fff" class="body"
+    style="margin: 0 0; display: block; background: #ffffff; -webkit-text-size-adjust: none">
+    <div id="mailsub" class="notification">
+        <table align="center" cellpadding="0" cellspacing="0" height="100%" width="100%">
+            <tbody>
+                <tr>
+                    <td align="center" bgcolor="#fff" valign="top" width="100%">
+                        <div>
+                            <table cellpadding="0" cellspacing="0" class="w320" style="margin: 0 auto;" width="600">
+                                <tbody>
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <table cellpadding="0" cellspacing="0" style="margin: 0 auto;" width="100%">
+                                            </table>
+                                            <table bgcolor="#fff" cellpadding="0" cellspacing="0"
+                                                style="margin: 30px 0; border: 1px solid #efefef; ">
+                                                <tbody style="margin-top: 15px;">
+                                                    <tr>
+                                                        <td style="text-align: center; padding-top: 20px;">
+                                                            <img alt="robot picture" height="100"
+                                                                src="https://zais.tech/wp-content/uploads/2022/12/Zais-logo-in-web-size-3.png"
+                                                                width="400">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="headig_line"                                                            >
+                                                            Welcome to RIU</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div>
+                                                                <table cellpadding="0" cellspacing="0"
+                                                                    style="margin: 0 auto;" width="75%">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <br>
+                                                                                <div
+                                                                                    style="color:#444; font-weight: 400; text-align: justify; padding: 0 20px;">
+                                                                                    Email Verification!
+                                                                                </div>
+                                                                                <br>
+                                                                                <div
+                                                                                    style="color:#444; font-weight: 400; text-align: justify; padding: 7px 20px;">
+                                                                                    Hi {{name}}, We just need to verify your email
+                                                                                    address before you can access [customer portal].
+                                                                                    Verify your email address <a target="_blank" href="{{ url }}">Click here</a>
+                                                                                    Thanks! – The ESG team
+                                                                                </div>
+                                                                                <div style="text-align: center; margin-top: 25px; padding-bottom: 5px;">
+                                                                                    <a class="name"
+                                                                                        style="border-radius:4px; color:#fff; padding: 12px 60px;"
+                                                                                        href="{{url}}">
+                                                                                        <span>Verify</span>
+                                                                                    </a>
+                                                                                </div><br>
+                                                                                <hr>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table cellpadding="0" cellspacing="0" style="margin: 0 auto;" width="75%; ">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="color:#444; font-weight: 400; text-align: justify;">
+                                                                                RIU <br>
+                                                                                <div
+                                                                                    style="color:#2d387b !important; text-align: justify; ">
+                                                                                    <a
+                                                                                        href="mailto:contact@riu.ai">contact@riu.ai</a>
+                                                                                </div>
+                                                                            </p>
+                                                                            <div style="color:#444; font-weight: 400; text-align: justify; padding-bottom: 10px;">
+                                                                                You can download our app from the link below.
+                                                                            </div>
+                                                                            <div class="appstore" style="padding-bottom: 20px; text-align: center;">
+                                                                                <a href="https://lms.zais.tech/wp-content/uploads/2022/09/LMS.apk" class="google">
+                                                                                    <img class="playstore1" src="https://lms.zais.tech/wp-content/uploads/2022/09/pwa-button.png" alt="" srcset="" width='150'>
+                                                                                </a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

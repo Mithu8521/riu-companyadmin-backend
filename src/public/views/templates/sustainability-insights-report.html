@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Sustainability Insights Report - RIU</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+        img {
+            max-width: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            object-fit: contain;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            color: #4a90a4;
+        }
+
+        a img {
+            border: none;
+        }
+
+        .lineBorder {
+            margin: 0 70px;
+        }
+
+        td,
+        h1,
+        h2,
+        h3 {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+            width: 100%;
+            height: 100%;
+            color: #666;
+            background: #fff;
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        .headline {
+            color: #444;
+            font-size: 28px;
+            text-align: center;
+            font-weight: 700;
+            padding: 20px;
+            line-height: 1.2;
+        }
+
+        .section-header {
+            background-color: #4a90a4;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 15px;
+            text-align: left;
+            margin: 20px 0 0 0;
+        }
+
+        .subsection-header {
+            background-color: #6bb6c7;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 15px;
+            text-align: left;
+            margin: 10px 0 0 0;
+        }
+
+        .insights-container {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .insights-content {
+            color: #444;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .insights-content h1 {
+            font-size: 20px;
+            color: #2d3748;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .insights-content h2 {
+            font-size: 18px;
+            color: #2d3748;
+            margin: 18px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .insights-content h3 {
+            font-size: 16px;
+            color: #4a5568;
+            margin: 16px 0 8px 0;
+            font-weight: 600;
+        }
+
+        .insights-content h4 {
+            font-size: 14px;
+            color: #4a5568;
+            margin: 14px 0 8px 0;
+            font-weight: 600;
+        }
+
+        .insights-content p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .insights-content ul,
+        .insights-content ol {
+            margin: 10px 0 10px 20px;
+            padding-left: 20px;
+        }
+
+        .insights-content li {
+            margin: 6px 0;
+            color: #666;
+        }
+
+        .insights-content strong {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .insights-content em {
+            font-style: italic;
+            color: #4a5568;
+        }
+
+        .insights-content code {
+            background-color: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #2d3748;
+        }
+
+        .insights-content pre {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .insights-content pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #e2e8f0;
+        }
+
+        .insights-content blockquote {
+            border-left: 4px solid #4a90a4;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #4a5568;
+            font-style: italic;
+        }
+
+        .insights-content hr {
+            border: none;
+            border-top: 1px solid #dee2e6;
+            margin: 20px 0;
+        }
+
+        .insights-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .insights-content table th {
+            background-color: #4a90a4;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .insights-content table td {
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .insights-content table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .graph-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+
+        .graph-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 3px;
+        }
+
+        .graph-title {
+            font-size: 14px;
+            color: #4a5568;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .category-section {
+            margin: 30px 0;
+        }
+
+        .summary-box {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+
+        @media screen {
+
+            td,
+            h1,
+            h2,
+            h3 {
+                font-family: 'Nunito', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            table[class="w320"] {
+                width: 100% !important;
+            }
+
+            .headline {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .lineBorder {
+                margin: 0;
+            }
+
+            .insights-container {
+                padding: 15px;
+            }
+
+            .insights-content {
+                font-size: 13px;
+            }
+
+            .section-header {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            .subsection-header {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body bgcolor="#fff" class="body"
+    style="margin: 0; display: block; background: #ffffff; -webkit-text-size-adjust: none">
+    <table align="center" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+            <tr>
+                <td align="center" bgcolor="#fff" valign="top" width="100%">
+                    <div>
+                        <table cellpadding="0" cellspacing="0" class="w320" style="margin: 0 auto;" width="700">
+                            <tbody>
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table bgcolor="#fff" cellpadding="0" cellspacing="0"
+                                            style="margin: 20px 0; border: 1px solid #efefef; width: 100%;">
+                                            <tbody>
+                                                <!-- Header -->
+                                                <tr>
+                                                    <td style="text-align: center; padding-top: 30px;">
+                                                        <img alt="RIU logo" height="80"
+                                                            src="https://copyadatafromawstoazure.blob.core.windows.net/uploads/Riu_TM_Logo.89974744.png"
+                                                            width="320">
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="headline">Sustainability Insights Report</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center; padding: 0 20px 20px; color: #666;">
+                                                        <strong>Reporting Period:</strong> {{reportingPeriod}}<br>
+                                                        <strong>Generated:</strong> {{generatedDate}}<br>
+                                                        <strong>Report Type:</strong> Sustainability Analysis
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Executive Summary (Optional) -->
+                                                {{#executiveSummary}}
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="summary-box">
+                                                            <div style="font-weight: bold; margin-bottom: 10px; color: #2d3748; font-size: 16px;">
+                                                                📊 Executive Summary
+                                                            </div>
+                                                            <div style="font-size: 14px; line-height: 1.6; color: #666;">
+                                                                {{executiveSummary}}
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {{/executiveSummary}}
+
+                                                <!-- Dynamic Category Sections -->
+                                                {{#sustainabilityInsights}}
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="category-section">
+                                                            <div class="section-header">{{categoryIcon}} {{name}}</div>
+
+                                                            <!-- Insights Subsection -->
+                                                            <div class="subsection-header">💡 Insights</div>
+                                                            <div class="insights-container">
+                                                                <div class="insights-content">
+                                                                    {{{insights}}}
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Graph Image -->
+                                                            {{#if graphImage}}
+                                                                <div class="graph-container">
+                                                                    <img src="{{graphImage}}" alt="{{name}} Graph">
+
+                                                                    {{#if graphTitle}}
+                                                                    <div class="graph-title">{{graphTitle}}</div>
+                                                                    {{/if}}
+                                                                </div>
+                                                            {{/if}}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {{/sustainabilityInsights}}
+
+                                                <!-- Key Takeaways (Optional) -->
+                                                {{#keyTakeaways}}
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">🎯 Key Takeaways</div>
+                                                        <div class="highlight-box">
+                                                            <div style="font-size: 14px; line-height: 1.6; color: #666;">
+                                                                {{{keyTakeaways}}}
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {{/keyTakeaways}}
+
+                                                <!-- Recommendations (Optional) -->
+                                                {{#recommendations}}
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">📋 Recommendations</div>
+                                                        <div class="insights-container">
+                                                            <div class="insights-content">
+                                                                {{{recommendations}}}
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {{/recommendations}}
+
+                                                <!-- AI Disclaimer -->
+                                                <tr>
+                                                    <td style="padding: 0 20px 20px 20px;">
+                                                        <div style="background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 5px; padding: 15px; margin: 10px 0;">
+                                                            <div style="font-weight: bold; color: #856404; margin-bottom: 8px; font-size: 13px;">
+                                                                ⚠️ Disclaimer
+                                                            </div>
+                                                            <div style="font-size: 12px; line-height: 1.6; color: #856404;">
+                                                                The RIU AI Tool was used in preparing this content, which has been reviewed for quality. Minor inaccuracies may exist despite our best efforts.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Footer -->
+                                                <tr>
+                                                    <td style="padding: 20px;">
+                                                        <table cellpadding="0" cellspacing="0" style="margin: 0 auto;"
+                                                            width="90%">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td
+                                                                        style="text-align: center; color: #666; font-size: 12px; padding: 15px 0; border-top: 1px solid #eee;">
+                                                                        <div style="margin-bottom: 10px;">
+                                                                            <strong>Report prepared by:</strong>
+                                                                            RIU<br>
+                                                                        </div>
+                                                                        <div style="margin-top: 15px;">
+                                                                            <div style="color:#444; font-weight: 400;">
+                                                                                Best regards,
+                                                                            </div>
+                                                                            <div style="color:#444; font-weight: 400;">
+                                                                                RIU <span
+                                                                                    style="font-size: 10px;">(Reporting
+                                                                                    Intelligence Unit)</span>
+                                                                            </div>
+                                                                            <div style="color:#4a90a4;">
+                                                                                <a
+                                                                                    href="mailto:contact@riu.ai">contact@riu.ai</a>
+                                                                            </div>
+                                                                            <div style="color:#4a90a4;">
+                                                                                <a
+                                                                                    href="https://www.riu.ai/">www.riu.ai</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+        <style>
+          html {
+            -webkit-print-color-adjust: exact;
+          }
+          @page 
+          { 
+              size: A3 portrait;
+              margin-top:50px;
+            
+          
+          }
+          body{
+            font-family: Arial, sans-serif;
+            width: 100%;
+      margin: 0;
+      padding: 0;
+            
+          }
+          table {
+      border-collapse: collapse;
+      border-bottom: 2px solid black !important;
+      margin-top: 5px;
+      width: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      border-right: 2px solid black !important;
+
+
+      font-size: 60px;
+      background: white !important;
+      
+   
+      margin-right: 50px !important;
+     
+
+
+    }
+
+
+    th {
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-right:  2px solid black !important;
+      padding: 5px !important;
+      padding-bottom: 40px !important;
+      font-size: 58px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      /* background-color: rgb(47, 106, 143) !important; */
+    }
+
+
+    td {
+      border-top: 1px solid rgb(9, 10, 10);
+      border-bottom: 1px solid rgb(9, 10, 10);
+      border-right: 1px solid rgb(9, 10, 10) !important;
+      border-left: 1px solid rgb(9, 10, 10);
+      font-family: Arial, Helvetica, sans-serif;
+
+
+      padding: 5px !important;
+      padding-bottom: 40px !important;
+      font-size: 55px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
+
+
+    .topicName {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      
+      color: yellow;
+      align-items: left;
+      font-size: 60px !important;
+      width: 40% !important;
+      height: 5vh !important;
+      padding: 5px;
+      margin-bottom: 20px !important;
+      margin-top: 50px !important;
+      border-radius: 15px !important;
+   
+    }
+
+
+    .question-title {
+      
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 75px !important;
+      color: black;
+      margin-bottom: 50px !important;
+      text-align: left;
+      margin: 0px;
+      padding: 10px;
+    }
+
+
+    .single-answer {
+      border-bottom: 2px solid rgb(51, 53, 53);
+      /* border-top: 1px solid rgb(9, 10, 10); */
+      font-family: Arial, Helvetica, sans-serif;
+
+     
+      font-size: 65px;
+      display: flex;
+
+
+    }
+
+
+    .question-single {
+      width: 50%;
+      padding-left: 30px !important;
+      padding-top: 20px !important;
+      padding-bottom: 60px !important;
+      border-left: 2px solid black;
+      border-top: 2px solid black;
+
+
+    }
+
+
+    .tabular-title {
+      font-size: 65px !important;
+      font-family: Arial, Helvetica, sans-serif;
+
+
+      color: black;
+      padding-left: 30px !important;
+      padding: 8px;
+
+
+    }
+
+
+    .single-answer:nth-child(odd) {
+      background-color: transparent;
+    }
+
+
+    .page-break {
+      margin-top: 5vh;
+      page-break-after: always !important;
+      text-align: center;
+    }
+
+
+    .page-breakk {
+      margin-top: 5vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always !important;
+      text-align: center;
+    }
+
+
+    .header-container {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+
+    }
+
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+
+    .yellow-box {
+      background-color: #FFCC00;
+      width: 300px;
+      height: 100px;
+    }
+
+
+    .company-name {
+
+
+      font-size: 44px;
+      margin-left: 10px;
+    }
+
+
+    .report-title {
+      font-size: 60px;
+    }
+
+
+    .content {
+      text-align: left;
+      margin-top: 10;
+      margin-left: 15vw;
+    }
+
+
+    .content div {
+      font-size: 180px;
+      margin: 0;
+    }
+
+
+    .content h2 {
+      font-size: 100px;
+      color: #333;
+      margin-top: 30px;
+    }
+
+
+    .footerr-container {
+      background-color: #FFCC00;
+      padding-top: 50px;
+      padding-bottom: 20px;
+      padding-left: 80px;
+      padding-right: 80px;
+      text-align: left;
+      margin-top: 46vh !important;
+      /* position: fixed; */
+      margin-left: 100px !important;
+      margin-right: 100px !important;
+      /* bottom: 0; */
+      width: 86% ;
+      height: 8.5vh;
+    }
+
+
+    .footer-text {
+      font-family: 'Carlito', sans-serif;
+      font-size: 40px;
+    }
+
+
+    .footer-address {
+      font-size: 30px;
+      margin-top: 10px !important;
+      font-family: 'Carlito', sans-serif;
+    }
+
+
+    .black-background {
+      background-color: black;
+      color: yellow;
+      font-size: 90px !important;
+      height: 10vh !important;
+      border-radius: 20px !important;
+      margin-top: 5% !important;
+      width: 100% !important;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+
+    .content-box {
+      border: 1px solid #000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: 'Carlito', sans-serif;
+      margin: 20px;
+      margin-left: 100px !important;
+      width: 89% !important;
+      margin-right: 100px !important;
+      margin-top: 75px !important;
+      padding: 40px;
+    }
+
+
+    .content-box h2 {
+      margin-top: 0;
+      font-size: 34px !important;
+      font-family: 'Carlito', sans-serif;
+
+    }
+
+
+    .hi{
+      margin-top: 10px !important;
+      font-size: 34px !important;
+      font-family: 'Carlito', sans-serif;
+    }
+
+
+    .content-box ul {
+      margin-top: 0;
+      font-size: 30px;
+      padding-left: 20px;
+      font-family: 'Carlito', sans-serif;
+    }
+
+
+    .page-number {
+      text-align: right;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+
+        </style>    
+    </head>
+    <body>
+        <div style="width: 100%; margin: 0 0;">
+            <div style="width: 100%;">
+                <div class="page-breakk">
+                  <div class="header-container">
+                    <div class="yellow-box"></div>
+                    <div class="logo">
+                      
+                      <span class="company-name"><%companyName%></span>
+                    </div>
+                    <div class="report-title">Integrated Report 2024-25</div>
+                  </div>
+                
+                  <div style="align-items: center; margin-top: 30%;">
+                    <div class="content">
+                      <div style="color: #3e3f3f;">Business</div>
+                      <div style="color: #3e3f3f;">Responsibility and</div>
+                      <div style="color: #3e3f3f;">Sustainability</div>
+                      <div style="color: #3e3f3f;">Reporting</div>
+                      <h2 style="color: #3e3f3f;">DRAFT INTERIM REPORT FOR H1 OF FY 2023-24</h2>
+                    </div>
+
+                  </div>
+                  
+                
+                  <!-- <div class="footerr-container">
+                    <div class="footer-text"><%companyName%></div>
+                    <div class="footer-address"><%companyName%> INDIA LIMITED | 8/9TH MILE, TUMKUR ROAD, BANGALORE - 560073</div>
+                  </div> -->
+                </div>
+                <div class="page-break">
+                  <div class="header-container">
+                    <div class="yellow-box"></div>
+                    <div class="logo">
+                      
+                      <span class="company-name"><%companyName%></span>
+                    </div>
+                    <div class="report-title">Integrated Report 2024-25</div>
+                  </div>
+                  <div class="content-box">
+                    <div style="font-size: 70px; margin-bottom: 10px;">Disclaimer:</div>
+                    <div style="font-size: 60px; margin-bottom: 20px;"><strong>IMPORTANT: Review instructions</strong></div>
+                    <ul style="text-align: left;">
+                      <li style="text-align: left; font-size: 60px;">Thank you for taking the time to review this document. Your inputs are very valuable.</li>
+                      <li style="text-align: left;font-size: 60px;">The document is not yet in its final layout. This is just the raw text that will be brought into a professional layout once the raw text is finalized.</li>
+                      <li style="text-align: left;font-size: 60px;">If you have any comments / suggestions for improvement to the text, please make them in the following form:
+                        <ul style="text-align: left;font-size: 50px;">
+                          <li style="text-align: left;font-size: 50px;">Whenever possible, use the “review/track changes” function to make a specific, tangible suggestion how to change the text.</li>
+                          <li style="text-align: left;font-size: 50px;">If your feedback point is a more general one that doesn’t pertain to an individual statement, please use the “comment” function on the paragraph or section title where it applies.</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                
+                </div>
+              
+                <% let singleAnswerQuestions = ["qualitative", "yes_no", "quantitative"]; %>
+                <% if (Object.keys(mainJson).length > 0) { %>
+                  <% let counter=1 %>
+               
+                    <% Object.keys(mainJson).forEach((topicId) => { %>
+                      <div class="page-break">
+                          <div class="header-container">
+                            <div class="yellow-box">
+                              
+                            </div>
+                            <div class="logo">
+                              <span class="company-name"><%companyName%></span>
+                            </div>
+                            <div class="report-title">Integrated Report 2024-25</div>
+                          </div>
+                      
+                      <div style="text-align: left;">
+                          <div class="topicName"><b><%=  topicIdToTopicNameMapping[topicId] %></b></div>
+                          <% Object.keys(mainJson[topicId]).forEach((quesTitle) => { %>
+                            <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                              <div style="width: 90%;">
+                                <p class="question-title"><b><%= quesTitle%></b></p>
+                              </div>
+
+                            </div>
+                            
+                              <%  let questions = mainJson[topicId][quesTitle]; %>
+                    
+                          <% questions.forEach((questionDetail) => { %>
+                          
+                            <% if (singleAnswerQuestions.includes(questionDetail["questionType"])) { %>
+                              <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                                <div style="width: 90%;">
+      
+                                  <div class="single-answer">
+                                    <div class="question-single" style="font-weight: bold;">
+                                        <%= questionDetail["report_id"] %>
+                                 
+                                      .  <%= questionDetail["title"] %>
+                                    </div>
+                                    <div class="question-single" style="border-right: 2px solid black;"><%= questionDetail["Answer"] %></div></div>
+                                </div>
+  
+                              </div>
+                              
+                            <% } else if (questionDetail["questionType"] === "tabular_question") { %>
+                              <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                                <div style="width: 90%;">
+                                  <div class="tabular-title" style="font-weight: bold;"><%=questionDetail["report_id"] %> . <%= questionDetail["title"] %></div>
+                                </div>
+  
+                              </div>
+                              
+                              <% let questionDetails = questionDetail["question_detail"]; %>
+                    
+                              <% let rows = [], header = [''], firstRowAndColumnHead = []; %>
+                            <% let answerRows = []; %>
+                            <% let rowCounter = 0; %>
+                            <% questionDetails.forEach((detail) => { %>
+                              <% if (detail["option_type"] === "row") { %>
+                                <% rows.push(detail["option"]); %>
+                              <% } else if (detail["option_type"] === "firstRowAndColumnHead") { %>
+                                <% firstRowAndColumnHead.push(detail["option"]); %>
+                              <% } else { %>
+                                <% header.push(detail["option"]); %>
+                              <% } %>
+                            <% }); %>
+                              
+                              <% if (questionDetail["Answer"]) { %>
+                                <% let combinedAnswers = questionDetail['Answer'] %>
+                                <% for (let i = 0; i < combinedAnswers.length; i++) { %>
+                                  <%let answerObj = combinedAnswers[i];%>
+                                  <!-- <div><%=answerObj['email']%></div> -->
+                                  <%if(combinedAnswers.length > 1){%>
+                                    <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                                      <div style="width: 90%;">
+                                        <div class="tabular-title"><%=counter%>.<%=i+1%></div>
+
+                                      </div>
+        
+                                    </div>
+                                  <% } %>
+                                  <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                                    <div style="width: 90%;">
+                                      <table >
+                                        <tr>
+                                          <% if (firstRowAndColumnHead) { %>
+                                            <th style="width: 15% !important; border-left: 2px solid black;"><%= firstRowAndColumnHead %></th>
+                                          <% } %>
+                                          <% let isFirstColumn = true; %>
+                                          <% header.forEach((column) => { %>
+                                             <% if (isFirstColumn) { %>
+                                                 <!-- <th ><%= column %></th> -->
+                                                 <% isFirstColumn = false; %>
+                                             <% } else { %>
+                                                 <th><%= column %></th>
+                                                 <% } %>
+                                          <% }); %>
+                                      </tr>
+                                      <% let answerArr = answerObj['answer']; %>
+                                      <% for(let j=0;j < answerArr.length;j++){ %>
+                                        <% if(answerArr[j]){ %>
+                                          <tr>
+                                            <td><%= rows[j] %></td>
+                                            <% for(let k=1;k < header.length ;k++){ %>
+                                              <td>
+                                                <% try{ %>
+                                                  <%= answerArr[j][k-1]; %>
+                                                <% }catch(e){ %>
+                                                    <%= '' %>
+                                                <% } %>
+                                              </td>
+                                            <% } %>
+                                          </tr>
+                                        <% } %>
+                                      <% } %>
+                                      </table>
+
+                                    </div>
+
+
+                                  </div>
+                                 
+                                <% } %>
+  
+  
+  
+                            
+                                <% } %>
+  
+  
+                                  <%questionDetail["report_id"]%>
+                            <% } else { %>
+                              <div style="display: flex; border: 1px solid black; padding: 16px; font-size: 30px; font-weight: bold; margin: 12px 0;">
+                                <span style="flex: 1; border-right: 1px solid black; padding: 0 16px;">
+                                  <%= questionDetail["report_id"] %>
+                                </span>
+                                <span style="flex: 2; border-right: 1px solid black; padding: 0 16px;">
+                                  <%= questionDetail["title"] %>
+                                </span>
+                                <span style="flex: 2; padding: 0 16px;">
+                                  <%= questionDetail["Answer"] || "No Answer" %>
+                                </span>
+                              </div>
+                           
+                            <% } %>
+                         
+                          <% }); %>
+                        <% }); %>
+                      </div>
+
+                    </div>
+                  </div>
+                        
+                    <% }); %>
+                  <% } %>               
+             </div>
+        </div>
+    </body>
+</html>

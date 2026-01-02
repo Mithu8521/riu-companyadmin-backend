@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>RIU | Your {{title}} exceeded Detail</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+        img {
+            width: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            object-fit: contain;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            color: #2d387b;
+        }
+
+        a img {
+            border: none;
+        }
+
+        td,
+        h1,
+        h2,
+        h3 {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+            font-size: 16px;
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            color: #666;
+            background: #fff;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        @media screen {
+
+            td,
+            h1,
+            h2,
+            h3 {
+                font-family: 'Nunito', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            table[class="w320"] {
+                width: 395px !important;
+            }
+
+            .headline {
+                font-size: 20px !important;
+                padding: 0 20px !important;
+            }
+        }
+
+        .name {
+            background-color: #4e945e;
+        }
+
+        .name:hover {
+            background-color: #4686a2;
+        }
+
+        .headline {
+            color: #444;
+            font-size: 36px;
+            text-align: center;
+            font-weight: 700;
+            padding: 0 20px;
+        }
+    </style>
+    
+</head>
+
+<body class="body" style="margin: 0 0; display: block; background: #ffffff; -webkit-text-size-adjust: none">
+    <div id="mailsub" class="notification">
+        <table cellpadding="0" cellspacing="0" style="margin: 30px auto; border: 1px solid #efefef; width: 550px;">
+            <tbody>
+                <tr>
+                    <td style="padding: 20px 40px;">
+                        <img alt="robot picture" height="100" src="https://riu-bucket.s3.ap-south-1.amazonaws.com/uploads/Social%2012.pngSocial%2012.png" width="400">
+                        <div class="headline">
+                            Welcome to RIU 
+                        </div>
+                        <div style="color:#444; font-weight: 400; text-align: center; padding: 0 20px; ">
+                            Your {{title}} has exceeded.
+                        </div>
+                        <p style="color:#444; font-weight: 400; text-align: justify;padding: 0 20px; ">Dear {{recipientName}},</p>
+                    
+                        <p style="color:#444; font-weight: 400; padding: 0 20px; ">
+                            Here are the details of the values of {{title}} by your company at location: {{location}} </p>
+                        <p style="color:#444; font-weight: 400; padding: 0 20px; margin: 0;">
+                            Current Monthly Value : <b> {{actualValue}} kl</b>
+                        </p>
+                        <p style="color:#444; font-weight: 400; padding: 0 20px; margin: 0;">
+                            Monthly Set Value : <b> {{targetValue}} kl</b>
+                        </p>
+                        <p style="color:#aa2222; font-weight: 400; padding: 0 20px; margin: 0;">
+                            Monthly Exceeded Value: <b> {{pass}} kl</b>
+                        </p>
+                        <!-- <p style="text-align: justify; font-weight:400; padding: 0 20px;">
+                            With these details, you can now access your RIU account and begin exploring the features we offer to help you achieve your goals.
+                        </p> -->
+                        <div style="text-align: center; margin-top: 25px; padding-bottom: 5px;">
+                            <a class="name" style="border-radius:4px; color:#fff; padding: 12px 60px;"
+                                href="{{url}}">
+                                <span>Login</span>
+                            </a>
+                        </div>
+                        
+                        <p style="color:#444; font-weight: 400; text-align: justify; padding: 0 20px;">
+                            If you have any questions or need assistance, please don't hesitate to reach out to our support team. We're here to help you make the most of your experience with RIU.
+                        </p>
+                        
+                        <p style="color:#444; font-weight: 400; text-align: justify; padding: 0 20px; margin: 0;">Best Regards,</p>
+                        <p style="color:#444; font-weight: 400; text-align: justify; padding: 0 20px; margin: 0;">RIU Team</p>
+                        <p style="color:#444; font-weight: 400; text-align: justify; padding: 0 20px; margin: 0;">
+                            <a href="mailto:contact@riu.ai" title="Contact Us" style="color:#2d387b !important;">contact@riu.ai</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

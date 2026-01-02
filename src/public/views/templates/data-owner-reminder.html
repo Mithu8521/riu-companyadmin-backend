@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Monthly Performance Report - Data Owner</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+        img {
+            max-width: 218px;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            object-fit: contain;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            color: #4a90a4;
+        }
+
+        a img {
+            border: none;
+        }
+
+        td,
+        h1,
+        h2,
+        h3 {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+            width: 100%;
+            height: 100%;
+            color: #666;
+            background: #fff;
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        .headline {
+            color: #444;
+            font-size: 26px;
+            text-align: center;
+            font-weight: 700;
+            padding: 15px;
+            line-height: 1.2;
+        }
+
+        .section-header {
+            background-color: #4a90a4;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .subsection-header {
+            background-color: #49bfae;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        .header-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .header-info-item {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 5px;
+        }
+
+        .greeting-section {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .metric-table {
+            width: 100%;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        .metric-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .metric-table th {
+            background-color: #f8f9fa;
+            padding: 10px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #444;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .pending-table {
+            width: 100%;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        .pending-table th {
+            background-color: #f8f9fa;
+            padding: 8px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #444;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .pending-table td {
+            padding: 8px 10px;
+            font-size: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .priority-high {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .priority-medium {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .priority-low {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .summary-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .thank-you-section {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .trends-table {
+            width: 100%;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        .trends-table th {
+            background-color: #4a90a4;
+            color: white;
+            padding: 10px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .trends-table td {
+            padding: 8px 12px;
+            font-size: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .alert-section {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .force-full-width {
+            width: 100% !important;
+        }
+
+        @media screen {
+            td, h1, h2, h3 {
+                font-family: 'Nunito', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            table[class="w320"] {
+                width: 395px !important;
+            }
+
+            .headline {
+                font-size: 18px;
+                padding: 10px;
+            }
+
+            .header-info-item {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+
+            .metric-table td,
+            .pending-table td,
+            .trends-table td {
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+
+            .metric-table th,
+            .pending-table th,
+            .trends-table th {
+                font-size: 10px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
+</head>
+
+<body bgcolor="#fff" class="body" style="margin: 0; display: block; background: #ffffff; -webkit-text-size-adjust: none">
+    <table align="center" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+            <tr>
+                <td align="center" bgcolor="#fff" valign="top" width="100%">
+                    <div>
+                        <table cellpadding="0" cellspacing="0" class="w320" style="margin: 0 auto;" width="650">
+                            <tbody>
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table bgcolor="#fff" cellpadding="0" cellspacing="0"
+                                            style="margin: 20px 0; border: 1px solid #efefef; width: 100%;">
+                                            <tbody>
+                                                <!-- Header -->
+                                                 <tr>
+                                                    <td style="text-align: center; padding-top: 30px;">
+                                                        <img alt="RIU logo" height="80"
+                                                            src="https://copyadatafromawstoazure.blob.core.windows.net/uploads/Riu_TM_Logo.89974744.png"
+                                                            width="320">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="headline">Performance Report - Data Owner</td>
+                                                </tr>
+
+                                                <!-- Header Information -->
+                                                
+
+                                                <!-- Greeting -->
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="greeting-section">
+                                                            <div style="font-size: 18px; margin-bottom: 10px;">👋 Hello {{dataOwnerName}},</div>
+                                                            <div style="color: #444; font-size: 14px;">
+                                                                We hope this message finds you well. Here's your personalized performance summary for {{reportPeriod}}.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                  <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="greeting-section">
+                                                            <div style="font-size: 18px; margin-bottom: 10px;"> 📅 Due Date: {{dueDate}}</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">📊 YOUR PERFORMANCE SUMMARY</div>
+                                                        <div style="font-weight: bold; margin: 15px 0 10px; color: #444;">Personal Metrics ({{reportPeriod}})</div>
+                                                        <table class="metric-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Metric</th>
+                                                                    <th>Count</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="font-weight: bold;">Questions Received</td>
+                                                                    <td style="color: #4a90a4; font-weight: bold;">{{questionsReceived}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-weight: bold;">Questions Answered</td>
+                                                                    <td style="color: #28a745; font-weight: bold;">{{questionsAnswered}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-weight: bold;">Pending Questions</td>
+                                                                    <td style="color: #dc3545; font-weight: bold;">{{pendingQuestions}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Pending Questions -->
+                                                <!-- <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">⚠️ PENDING QUESTIONS REQUIRING YOUR ATTENTION</div>
+                                                        
+                                                        {{#if immediateActionQuestions}}
+                                                        <div class="subsection-header">Immediate Action Required</div>
+                                                        <table class="pending-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Question ID</th>
+                                                                    <th>Category</th>
+                                                                    <th>Days Pending</th>
+                                                                    <th>Priority</th>
+                                                                    <th>Due Date</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{#immediateActionQuestions}}
+                                                                <tr>
+                                                                    <td>{{questionId}}</td>
+                                                                    <td>{{category}}</td>
+                                                                    <td>{{daysPending}} days</td>
+                                                                    <td class="priority-{{priorityClass}}">{{priority}}</td>
+                                                                    <td>{{dueDate}}</td>
+                                                                </tr>
+                                                                {{/immediateActionQuestions}}
+                                                            </tbody>
+                                                        </table>
+                                                        {{/if}}
+
+                                                        {{#if weeklyPriorityQuestions}}
+                                                        <div class="subsection-header">This Week's Priority</div>
+                                                        <table class="pending-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Question ID</th>
+                                                                    <th>Category</th>
+                                                                    <th>Days Pending</th>
+                                                                    <th>Priority</th>
+                                                                    <th>Due Date</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{#weeklyPriorityQuestions}}
+                                                                <tr>
+                                                                    <td>{{questionId}}</td>
+                                                                    <td>{{category}}</td>
+                                                                    <td>{{daysPending}} days</td>
+                                                                    <td class="priority-{{priorityClass}}">{{priority}}</td>
+                                                                    <td>{{dueDate}}</td>
+                                                                </tr>
+                                                                {{/weeklyPriorityQuestions}}
+                                                            </tbody>
+                                                        </table>
+                                                        {{/if}}
+
+                                                        <div class="summary-box">
+                                                            <div style="font-size: 14px; font-weight: bold; margin-bottom: 8px;">📋 Summary</div>
+                                                            <div style="font-size: 13px;">
+                                                                <strong>Total Pending:</strong> {{totalPending}} questions &nbsp;|&nbsp;
+                                                                <strong>Overdue (>10 days):</strong> {{overdueQuestions}} question &nbsp;|&nbsp;
+                                                                <strong>This Week:</strong> {{thisWeekQuestions}} questions need responses
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr> -->
+
+                                                <!-- Monthly Trends -->
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">📈 YOUR MONTHLY TRENDS</div>
+                                                        <div style="font-weight: bold; margin: 15px 0 10px; color: #444;">Performance Over Time</div>
+                                                        <table class="trends-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Month</th>
+                                                                    <th>Questions Assigned</th>
+                                                                    <th>Questions Answered</th>
+                                                                    <th>Questions Pending</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{#monthlyTrends}}
+                                                                <tr>
+                                                                    <td style="font-weight: bold;">{{month}}</td>
+                                                                    <td>{{questionsAssigned}}</td>
+                                                                    <td style="color: #28a745;">{{questionsAnswered}}</td>
+                                                                    <td style="color: #dc3545;">{{questionsPending}}</td>
+                                                                </tr>
+                                                                {{/monthlyTrends}}
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Thank You Section -->
+                                                <!-- <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">🎉 THANK YOU!</div>
+                                                        <div class="thank-you-section">
+                                                            <div style="font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #4a90a4;">
+                                                                Thank you for your continued dedication and excellent performance!
+                                                            </div>
+                                                            <div style="color: #444; font-size: 14px; line-height: 1.5;">
+                                                                Your consistent improvement and quality responses make a significant difference to our operations.<br><br>
+                                                                Keep up the great work, and don't hesitate to reach out if you need any support!
+                                                            </div>
+                                                            <div style="margin-top: 15px; font-weight: bold; color: #4a90a4;">
+                                                                Best regards,<br>
+                                                                {{fromTeam}}
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr> -->
+
+                                                <!-- Footer -->
+                                               <tr>
+                                                    <td style="padding: 20px;">
+                                                        <table cellpadding="0" cellspacing="0" style="margin: 0 auto;"
+                                                            width="90%">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td
+                                                                        style="text-align: center; color: #666; font-size: 12px; padding: 15px 0; border-top: 1px solid #eee;">
+                                                                        <div style="margin-bottom: 10px;">
+                                                                            <strong>Report prepared by:</strong>
+                                                                            RIU<br>
+
+                                                                        </div>
+                                                                        <div style="margin-top: 15px;">
+                                                                            <div style="color:#444; font-weight: 400;">
+                                                                                Best regards,
+                                                                            </div>
+                                                                            <div style="color:#444; font-weight: 400;">
+                                                                                RIU <span
+                                                                                    style="font-size: 10px;">(Reporting
+                                                                                    Intelligence Unit)</span>
+                                                                            </div>
+                                                                            <div style="color:#4a90a4;">
+                                                                                <a
+                                                                                    href="mailto:contact@riu.ai">contact@riu.ai</a>
+                                                                            </div>
+                                                                            <div style="color:#4a90a4;">
+                                                                                <a
+                                                                                    href="https://www.riu.ai/">www.riu.ai</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

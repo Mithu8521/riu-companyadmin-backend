@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>RIU</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+        img {
+            max-width: 218px;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            object-fit: contain;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            color: #2d387b;
+        }
+
+        a img {
+            border: none;
+        }
+
+        td,
+        h1,
+        h2,
+        h3 {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+            width: 100%;
+            height: 100%;
+            color: #666;
+            background: #fff;
+            font-size: 16px;
+            height: 100vh;
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        .force-full-width {
+            width: 100% !important;
+        }
+
+        @media screen {
+
+            td,
+            h1,
+            h2,
+            h3 {
+                font-family: 'Nunito', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            table[class="w320"] {
+                width: 395px !important;
+            }
+
+            .headline {
+                font-size: 20px !important;
+                padding: 0 20px !important;
+            }
+        }
+
+        .name {
+            background-color: #2d387b;
+        }
+
+        .name:hover {
+            background-color: #49bfae;
+        }
+
+        .headline {
+            color: #444;
+            font-size: 36px;
+            text-align: center;
+            font-weight: 700;
+            padding: 0 20px;
+        }
+    </style>
+
+</head>
+
+<body bgcolor="#fff" class="body"
+    style="margin: 0 0; display: block; background: #ffffff; -webkit-text-size-adjust: none">
+    <table align="center" cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tbody>
+            <tr>
+                <td align="center" bgcolor="#fff" valign="top" width="100%">
+                    <div>
+                        <table cellpadding="0" cellspacing="0" class="w320" style="margin: 0 auto;" width="600">
+                            <tbody>
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table cellpadding="0" cellspacing="0" style="margin: 0 auto;" width="100%">
+                                        </table>
+                                        <table bgcolor="#fff" cellpadding="0" cellspacing="0"
+                                            style="margin: 30px 0; border: 1px solid #efefef; width: 100%;">
+                                            <tbody style="margin-top: 15px;">
+                                                <tr>
+                                                    <td style="text-align: center; padding-top: 20px;">
+                                                        <img alt="robot picture" height="100"
+                                                            src="https://zais.tech/wp-content/uploads/2022/12/Zais-logo-in-web-size-3.png"
+                                                            width="400">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="headline">RIU
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <table cellpadding="0" cellspacing="0"
+                                                                style="margin: 0 auto;" width="75%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><br>
+                                                                            <div
+                                                                                style="color:#444; font-weight: 400; text-align: center; padding: 0 20px;">
+                                                                                Invalid Answer Information:
+                                                                            </div><br>
+                                                                            <div
+                                                                                style="color:#444; font-weight: 400; text-align: justify;  padding: 0 20px;">
+                                                                                <div><span style=" font-weight:800;">Company</span> - <%=userEmail%></div>
+                                                                                <div><span style=" font-weight:800;">Question type -</span>  <%=questionType%></div>
+                                                                                <div><span style=" font-weight:800;">Question title -</span>  <%=questionTitle%></div>
+                                                                                <hr>
+                                                                                <div><span style=" font-weight:800;">Invalid Answer</span></div>
+                                                                                <% if(Object.keys(answer).length){ %>
+                                                                                    <% Object.keys(answer).map(key=>{ %>
+                                                                                        <div><span style=" font-weight:800;"><%=key%></span> - <%=answer[key]%></div>
+                                                                                <% })} %>
+                                                                            </div>
+                                                                            <br>
+                                                                            <hr>
+                                                                            
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{subject}}</title>
+
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', Arial, sans-serif;
+      background: #fff;
+      color: #444;
+      -webkit-font-smoothing: antialiased;
+      width: 100% !important;
+    }
+
+    .tagged-name {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    img {
+      max-width: 100%;
+      border: 0;
+      object-fit: contain;
+    }
+
+    table {
+      border-collapse: collapse !important;
+      width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1f9ed1;
+    }
+
+    .headline {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+      text-align: center;
+      padding: 18px 10px 6px;
+      line-height: 1.2;
+    }
+
+    .sub-text {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      padding-bottom: 12px;
+    }
+
+    .body-section {
+      padding: 20px;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Single, stronger message box */
+    .message-box {
+      background: #f0f9ff;
+      border: 2px solid #1f9ed169;
+      border-left: 5px solid #1f9ed1;
+      border-radius: 6px;
+      padding: 16px;
+      margin-top: 15px;
+    }
+
+    .tagged-everyone {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .message-meta {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .participants-box {
+      background: #fff;
+      border: 1px solid #e6eefc;
+      border-radius: 6px;
+      padding: 14px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      background: #eef2ff;
+      color: #374151;
+      border-radius: 6px;
+      font-size: 12px;
+      margin: 4px;
+    }
+
+    .question-details-box {
+      background: #f8fafc;
+      border: 1px solid #e6eefc;
+      border-radius: 6px;
+      padding: 14px;
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+
+    .meta-item {
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .meta-item strong {
+      color: #1f9ed1;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 25px 0;
+    }
+
+    .btn {
+      background: #1f9ed1;
+      color: #fff !important;
+      padding: 10px 18px;
+      font-weight: 700;
+      display: inline-block;
+      border-radius: 6px;
+    }
+/* #ffb366; */
+ .do-not-reply {
+  background: #fff4e5;
+  border-left: 5px solid #ff9800;
+  padding: 10px 14px;
+  margin: 0 20px 10px;
+  font-size: 13px;
+  color: #8a5200;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+
+
+
+    .footer {
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+      padding: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    @media only screen and (max-width: 480px) {
+      .body-section {
+        padding: 15px;
+      }
+
+      .headline {
+        font-size: 18px;
+        padding: 12px 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <table align="center" cellpadding="0" cellspacing="0" width="700" bgcolor="#ffffff"
+    style="margin: 0 auto; border:1px solid #efefef;">
+    <tbody>
+
+      <!-- LOGO -->
+      <tr>
+        <td align="center" style="padding: 20px;">
+          <img src="https://copyadatafromawstoazure.blob.core.windows.net/uploads/Riu_TM_Logo.89974744.png"
+            alt="{{appName}} Logo" width="160">
+        </td>
+      </tr>
+
+      <tr align="center">
+        <td class="do-not-reply">
+          ⚠️ Please do not reply to this email. This is an automated notification.
+        </td>
+      </tr>
+      <!-- DO NOT REPLY WARNING -->
+
+      <!-- HEADER TITLE (NO SUBJECT PART) -->
+
+      <tr>
+        <td class="headline">
+          New Message from "{{lastMessage.senderName}}"
+        </td>
+      </tr>
+
+      <!-- SUB TEXT -->
+      <tr>
+        <td class="sub-text">
+          Notification from {{appName}}
+        </td>
+      </tr>
+
+      <!-- MAIN BODY -->
+      <tr>
+        <td class="body-section">
+
+
+          {{#if lastMessage}}
+
+          <div class="message-box">
+            <div style="font-size:15px; color:#111; line-height:1.6;">
+              {{{processedText}}}
+            </div>
+          </div>
+
+          {{#if lastMessage.meta.attachments}}
+          <div style="margin-top:10px;">
+            <strong>Attachments:</strong><br>
+            {{#each lastMessage.meta.attachments}}
+            <a href="{{this}}" target="_blank">{{this}}</a><br>
+            {{/each}}
+          </div>
+          {{/if}}
+          </div>
+          {{/if}}
+
+          <!-- QUESTION DETAILS AT THE END -->
+          <div class="question-details-box">
+            <div class="section-title">Question Details</div>
+
+            {{#if title}}
+            <div class="meta-item">
+              <strong>Question Title:</strong> {{title}}
+            </div>
+            {{/if}}
+
+            {{#if financialYear}}
+            <div class="meta-item">
+              <strong>Financial Year:</strong> {{financialYear}}
+            </div>
+            {{/if}}
+
+            {{#if location}}
+            <div class="meta-item">
+              <strong>Location:</strong> {{location}}
+            </div>
+            {{/if}}
+
+            {{#if period}}
+            <div class="meta-item">
+              <strong>Period:</strong> {{period}}
+            </div>
+            {{/if}}
+
+            <!-- {{#if answerFrequency}}
+            <div class="meta-item">
+              <strong>Frequency:</strong> {{answerFrequency}}
+            </div>
+            {{/if}} -->
+            {{#if participants}}
+            <div class="participants-box">
+              <strong>Tagged Participants:</strong><br><br>
+              {{#each participants}}
+              <span class="tag">{{this.name}} — {{this.role}}</span>
+              {{/each}}
+            </div>
+            {{/if}}
+          </div>
+
+
+        </td>
+      </tr>
+
+      <!-- FOOTER -->
+      <tr>
+        <td class="footer">
+          {{appName}} • <a href="{{appUrl}}">{{appUrl}}</a><br><br>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</body>
+
+</html>

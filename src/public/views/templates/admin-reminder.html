@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Performance Report - RIU</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+        img {
+            max-width: 218px;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            object-fit: contain;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            color: #4a90a4;
+        }
+
+        a img {
+            border: none;
+        }
+
+        .lineBorder {
+            margin: 0 70px;
+        }
+
+        td,
+        h1,
+        h2,
+        h3 {
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+            width: 100%;
+            height: 100%;
+            color: #666;
+            background: #fff;
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        .headline {
+            color: #444;
+            font-size: 28px;
+            text-align: center;
+            font-weight: 700;
+            padding: 20px;
+            line-height: 1.2;
+        }
+
+        .section-header {
+            background-color: #4a90a4;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .subsection-header {
+            background-color: #6bb6c7;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        .metric-table {
+            width: 100%;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        .metric-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .metric-name {
+            font-weight: bold;
+            color: #444;
+            width: 40%;
+        }
+
+        .metric-value {
+            color: #4a90a4;
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .metric-status {
+            width: 30%;
+            font-size: 12px;
+        }
+
+        .status-improving {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .status-growing {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .status-stable {
+            color: #6c757d;
+        }
+
+        .status-attention {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .ranking-table {
+            width: 100%;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        .ranking-table th {
+            background-color: #f8f9fa;
+            padding: 8px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #444;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .ranking-table td {
+            padding: 6px 10px;
+            font-size: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .priority-high {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .priority-medium {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .priority-low {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .priority-critical {
+            color: #8b0000;
+            font-weight: bold;
+            background-color: #ffe6e6;
+        }
+
+        .critical-item {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+
+        .action-item {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+
+        .summary-box {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .analysis-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+
+        .bottom-performers {
+            background-color: #f0f9fa;
+            border: 1px solid #b8dce3;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        /* Performance Tables Styles */
+        .performance-tables-container {
+            margin: 15px 0;
+        }
+
+        .performance-table-section {
+            background: #f8fdfe;
+            border: 1px solid #c7e8ed;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .performance-section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #4a90a4;
+        }
+
+        .performance-table {
+            width: 100%;
+            border: 1px solid #c7e8ed;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .performance-table th {
+            background: #4a90a4;
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+
+        .performance-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        .performance-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .performance-table tr:hover td {
+            background-color: #f1f9fa;
+        }
+
+        .name-cell {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .metric-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .total-badge {
+            background: #4a90a4;
+        }
+
+        .answered-badge {
+            background: #38a169;
+        }
+
+        .pending-badge {
+            background: #dd6b20;
+        }
+
+        .accepted-badge {
+            background: #38a169;
+        }
+
+        .rejected-badge {
+            background: #e53e3e;
+        }
+
+        .not-responded-badge {
+            background: #718096;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 120px;
+        }
+
+        .progress-percentage {
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 4px;
+            color: #2d3748;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #e2e8f0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+            min-width: 0%;
+            max-width: 100%;
+        }
+
+        .progress-answered {
+            background: #38a169;
+        }
+
+        .progress-accepted {
+            background: #38a169;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-weight: bold;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .rank-1 {
+            background: #ffd700;
+            color: #8b6914;
+        }
+
+        .rank-2 {
+            background: #c0c0c0;
+            color: #666;
+        }
+
+        .rank-3 {
+            background: #cd7f32;
+            color: white;
+        }
+
+        .rank-other {
+            background: #4a90a4;
+        }
+
+        .force-full-width {
+            width: 100% !important;
+        }
+
+        @media screen {
+
+            td,
+            h1,
+            h2,
+            h3 {
+                font-family: 'Nunito', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            table[class="w320"] {
+                width: 395px !important;
+            }
+
+            .headline {
+                font-size: 18px;
+                padding: 10px;
+            }
+
+            .lineBorder {
+                margin: 0;
+            }
+
+            .metric-table td {
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+
+            .ranking-table th,
+            .ranking-table td {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
+
+            .performance-table th,
+            .performance-table td {
+                font-size: 10px;
+                padding: 8px 6px;
+            }
+
+            .metric-badge {
+                font-size: 9px;
+                padding: 3px 6px;
+            }
+
+            .performance-section-title {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body bgcolor="#fff" class="body"
+    style="margin: 0; display: block; background: #ffffff; -webkit-text-size-adjust: none">
+    <table align="center" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+            <tr>
+                <td align="center" bgcolor="#fff" valign="top" width="100%">
+                    <div>
+                        <table cellpadding="0" cellspacing="0" class="w320" style="margin: 0 auto;" width="700">
+                            <tbody>
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table bgcolor="#fff" cellpadding="0" cellspacing="0"
+                                            style="margin: 20px 0; border: 1px solid #efefef; width: 100%;">
+                                            <tbody>
+                                                <!-- Header -->
+                                                <tr>
+                                                    <td style="text-align: center; padding-top: 30px;">
+                                                        <img alt="RIU logo" height="80"
+                                                            src="https://copyadatafromawstoazure.blob.core.windows.net/uploads/Riu_TM_Logo.89974744.png"
+                                                            width="320">
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="headline">Performance Tracking Report</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center; padding: 0 20px 20px; color: #666;">
+                                                        <strong>Reporting Period:</strong> {{reportingPeriod}}<br>
+                                                        <strong>Generated:</strong> {{generatedDate}}<br>
+                                                        <strong>Report Type:</strong> {{reportType}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">📈 Current Performance Summary
+                                                        </div>
+
+
+                                                        <table class="metric-table">
+                                                            <tr>
+                                                                <td class="metric-name">Total Audit Pending</td>
+                                                                <td class="metric-value">
+                                                                    {{totalAuditPendingForCurrentPeriods}}</td>
+                                                                <td
+                                                                    class="metric-status status-{{auditPendingStatusForCurrentPeriods}}">
+                                                                    {{auditPendingChangeForCurrentPeriods}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Total Answer Pending</td>
+                                                                <td class="metric-value">
+                                                                    {{totalAnswerPendingForCurrentPeriods}}</td>
+                                                                <td
+                                                                    class="metric-status status-{{answerPendingStatusForCurrentPeriods}}">
+                                                                    {{answerPendingChangeForCurrentPeriods}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Active Data Owner Locations</td>
+                                                                <td class="metric-value">
+                                                                    {{activeDataOwnersLocationsForCurrentPeriods}}/{{totalLocationsForCurrentPeriods}}
+                                                                </td>
+                                                                <td
+                                                                    class="metric-status status-{{locationsStatusForCurrentPeriods}}">
+                                                                    {{locationsChangeDataOwnerForCurrentPeriods}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Active Auditor Locations</td>
+                                                                <td class="metric-value">
+                                                                    {{activeAuditorsLocationsForCurrentPeriods}}/{{totalLocationsForCurrentPeriods}}
+                                                                </td>
+                                                                <td
+                                                                    class="metric-status status-{{locationsStatusForCurrentPeriods}}">
+                                                                    {{locationsChangeAuditorForCurrentPeriods}}
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </table>
+
+
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="performance-tables-container">
+                                                            <!-- Data Entry Staff Performance Table -->
+                                                            <div class="performance-table-section">
+                                                                <div class="performance-section-title">
+                                                                    📝 Data Entry Staff Performance
+                                                                </div>
+
+                                                                <table class="performance-table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width: 10%;">S.No</th>
+                                                                            <th style="width: 20%;">Name</th>
+                                                                             <th style="width: 20%;">Unit Code</th>
+                                                                            <th style="width: 12%;">Total Assigned</th>
+                                                                            <th style="width: 12%;">Answered</th>
+                                                                            <th style="width: 12%;">Pending</th>
+                                                                            <th style="width: 14%;">Completion Rate</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {{#bottomDataEntryStaffForCurrentPeriods}}
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="rank-badge rank-other">{{serialNumber}}</span>
+                                                                            </td>
+
+                                                                            <td class="name-cell">{{name}}</td>
+                                                                                   <td class="name-cell">{{unitCode}}</td>
+                                                                            
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge total-badge">{{totalAssignedQuestionForAnswered}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge answered-badge">{{answered}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge pending-badge">{{answerNotResponded}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="progress-container">
+                                                                                    <div class="progress-percentage">
+                                                                                        {{completionPercentage}}%</div>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        {{/bottomDataEntryStaffForCurrentPeriods}}
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <!-- Auditors Performance Table -->
+                                                            <div class="performance-table-section">
+                                                                <div class="performance-section-title">
+                                                                    🔍 Auditors Performance
+                                                                </div>
+
+                                                                <table class="performance-table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width: 8%;">S.No</th>
+                                                                            <th style="width: 20%;">Name</th>
+                                                                             <th style="width: 20%;">Unit Code</th>
+                                                                            <th style="width: 12%;">Total Assigned</th>
+                                                                            <th style="width: 10%;">Accepted</th>
+                                                                            <th style="width: 10%;">Rejected</th>
+                                                                            <th style="width: 10%;">Not Responded</th>
+                                                                            <th style="width: 10%;">Completion Rate</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {{#bottomAuditorsForCurrentPeriods}}
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="rank-badge rank-other">{{serialNumber}}</span>
+                                                                            </td>
+
+                                                                            <td class="name-cell">{{name}}</td>
+                                                                               <td class="name-cell">{{unitCode}}</td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge total-badge">{{totalAssignedQuestionForAudit}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge accepted-badge">{{accepted}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge rejected-badge">{{rejected}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge not-responded-badge">{{auditorNotResponded}}</span>
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <div class="progress-container">
+                                                                                    <div class="progress-percentage">
+                                                                                        {{auditCompletionPercentage}}%
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </td>
+
+
+                                                                        </tr>
+                                                                        {{/bottomAuditorsForCurrentPeriods}}
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">📈 OVERALL SUMMARY
+                                                        </div>
+                                                        <table class="metric-table">
+                                                            <tr>
+                                                                <td class="metric-name">Total Audit Pending</td>
+                                                                <td class="metric-value">{{totalAuditPending}}</td>
+                                                                <td class="metric-status status-{{auditPendingStatus}}">
+                                                                    {{auditPendingChange}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Total Answer Pending</td>
+                                                                <td class="metric-value">{{totalAnswerPending}}</td>
+                                                                <td
+                                                                    class="metric-status status-{{answerPendingStatus}}">
+                                                                    {{answerPendingChange}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Active Data Owner Locations</td>
+                                                                <td class="metric-value">
+                                                                    {{activeDataOwnersLocationsForAllPeriods}}/{{totalLocations}}
+                                                                </td>
+                                                                <td class="metric-status status-{{locationsStatus}}">
+                                                                    {{locationsChangeDataOwner}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Active Auditor Locations</td>
+                                                                <td class="metric-value">
+                                                                    {{activeAuditorsLocationsForAllPeriods}}/{{totalLocations}}
+                                                                </td>
+                                                                <td class="metric-status status-{{locationsStatus}}">
+                                                                    {{locationsChangeAuditor}}
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </table>
+
+
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="performance-tables-container">
+                                                            <!-- Data Entry Staff Performance Table -->
+                                                            <div class="performance-table-section">
+                                                                <div class="performance-section-title">
+                                                                    📝 Data Entry Staff Performance
+                                                                </div>
+
+                                                                <table class="performance-table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width: 10%;">S.No</th>
+                                                                            <th style="width: 20%;">Name</th>
+                                                                             <th style="width:20%;">Unit Code</th>
+                                                                            <th style="width: 12%;">Total Assigned</th>
+                                                                            <th style="width: 12%;">Answered</th>
+                                                                            <th style="width: 12%;">Pending</th>
+                                                                            <th style="width: 14%;">Completion Rate</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {{#bottomDataEntryStaff}}
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="rank-badge rank-other">{{serialNumber}}</span>
+                                                                            </td>
+
+                                                                            <td class="name-cell">{{name}}</td>
+                                                                              <td class="name-cell">{{unitCode}}</td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge total-badge">{{totalAssignedQuestionForAnswered}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge answered-badge">{{answered}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge pending-badge">{{answerNotResponded}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="progress-container">
+                                                                                    <div class="progress-percentage">
+                                                                                        {{completionPercentage}}%</div>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        {{/bottomDataEntryStaff}}
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <!-- Auditors Performance Table -->
+                                                            <div class="performance-table-section">
+                                                                <div class="performance-section-title">
+                                                                    🔍 Auditors Performance
+                                                                </div>
+
+                                                                <table class="performance-table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width: 8%;">S.No</th>
+                                                                            <th style="width: 20%;">Name</th>
+                                                                            <th style="width: 20%;">Unit Code</th>
+                                                                            <th style="width: 12%;">Total Assigned</th>
+                                                                            <th style="width: 10%;">Accepted</th>
+                                                                            <th style="width: 10%;">Rejected</th>
+                                                                            <th style="width: 10%;">Not Responded</th>
+                                                                            <th style="width: 10%;">Completion Rate</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {{#bottomAuditors}}
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="rank-badge rank-other">{{serialNumber}}</span>
+                                                                            </td>
+
+                                                                            <td class="name-cell">{{name}}</td>
+                                                                             <td class="name-cell">{{unitCode}}</td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge total-badge">{{totalAssignedQuestionForAudit}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge accepted-badge">{{accepted}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge rejected-badge">{{rejected}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span
+                                                                                    class="metric-badge not-responded-badge">{{auditorNotResponded}}</span>
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <div class="progress-container">
+                                                                                    <div class="progress-percentage">
+                                                                                        {{auditCompletionPercentage}}%
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </td>
+
+
+                                                                        </tr>
+                                                                        {{/bottomAuditors}}
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Data Owner Progress -->
+                                                <!-- <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">👤 DATA OWNER PROGRESS -
+                                                            {{currentMonth}}</div>
+
+                                                        <div class="subsection-header">Current Month Performance Summary
+                                                        </div>
+                                                        <table class="metric-table">
+                                                            <tr>
+                                                                <td class="metric-name">Total Data Owners</td>
+                                                                <td class="metric-value">{{totalDataOwners}}</td>
+                                                                <td
+                                                                    class="metric-status status-{{totalDataOwnersStatus}}">
+                                                                    {{totalDataOwnersChange}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Data Owners with Pending
+                                                                    Questions</td>
+                                                                <td class="metric-value">
+                                                                    {{dataOwnersWithPendingCurrent}}</td>
+                                                                <td
+                                                                    class="metric-status status-{{dataOwnersWithPendingCurrentStatus}}">
+                                                                    {{dataOwnersWithPendingCurrentChange}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Total Pending Questions</td>
+                                                                <td class="metric-value">
+                                                                    {{totalPendingQuestionsCurrent}}</td>
+                                                                <td
+                                                                    class="metric-status status-{{totalPendingQuestionsCurrentStatus}}">
+                                                                    {{totalPendingQuestionsCurrentChange}}</td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <div
+                                                            style="font-weight: bold; margin: 15px 0 10px; color: #444;">
+                                                            Data Owners with Highest Pending Questions
+                                                            ({{currentMonth}})</div>
+                                                        <table class="ranking-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Rank</th>
+                                                                    <th>Data Owner Name</th>
+                                                                    <th>Location</th>
+                                                                    <th>Pending Questions</th>
+                                                                    <th>Days Pending</th>
+                                                                    <th>Priority Level</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{#topDataOwners}}
+                                                                <tr>
+                                                                    <td>{{rank}}</td>
+                                                                    <td>{{name}}</td>
+                                                                    <td>{{location}}</td>
+                                                                    <td>{{pendingQuestions}}</td>
+                                                                    <td>{{daysPending}}</td>
+                                                                    <td class="priority-{{priorityClass}}">
+                                                                        {{priorityLevel}}</td>
+                                                                </tr>
+                                                                {{/topDataOwners}}
+                                                            </tbody>
+                                                        </table>
+
+                                                        <div class="analysis-box">
+                                                            <div
+                                                                style="font-weight: bold; margin-bottom: 8px; color: #444;">
+                                                                Data Owner Activity Analysis</div>
+                                                            <div style="font-size: 13px; line-height: 1.4;">
+                                                                • <strong>Most Active Data Owners:</strong>
+                                                                {{mostActiveDataOwners}} out of {{totalDataOwners}}
+                                                                ({{activityRate}}% activity rate)<br>
+                                                                • <strong>Critical Cases:</strong>
+                                                                {{criticalCasesDataOwners}} data owner with 25+ days
+                                                                pending<br>
+                                                                • <strong>High Priority Cases:</strong>
+                                                                {{highPriorityCasesDataOwners}} data owners with 100+
+                                                                pending questions<br>
+                                                                • <strong>New Data Owners Added:</strong>
+                                                                {{newDataOwnersAdded}} new data owners onboarded in
+                                                                {{currentMonthName}}
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                              
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">🔍 AUDITOR PROGRESS -
+                                                            {{currentMonth}}</div>
+
+                                                        <div class="subsection-header">Current Month Performance Summary
+                                                        </div>
+                                                        <table class="metric-table">
+                                                            <tr>
+                                                                <td class="metric-name">Total Auditors</td>
+                                                                <td class="metric-value">{{totalAuditors}}</td>
+                                                                <td
+                                                                    class="metric-status status-{{totalAuditorsStatus}}">
+                                                                    {{totalAuditorsChange}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Auditors with Pending Audits
+                                                                </td>
+                                                                <td class="metric-value">
+                                                                    {{auditorsWithPendingAuditsCurrent}}</td>
+                                                                <td
+                                                                    class="metric-status status-{{auditorsWithPendingAuditsCurrentStatus}}">
+                                                                    {{auditorsWithPendingAuditsCurrentChange}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="metric-name">Total Pending Audits</td>
+                                                                <td class="metric-value">{{totalPendingAuditsCurrent}}
+                                                                </td>
+                                                                <td
+                                                                    class="metric-status status-{{totalPendingAuditsCurrentStatus}}">
+                                                                    {{totalPendingAuditsCurrentChange}}</td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <div
+                                                            style="font-weight: bold; margin: 15px 0 10px; color: #444;">
+                                                            Auditors with Highest Pending Questions ({{currentMonth}})
+                                                        </div>
+                                                        <table class="ranking-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Rank</th>
+                                                                    <th>Auditor Name</th>
+                                                                    <th>Location</th>
+                                                                    <th>Pending Questions</th>
+                                                                    <th>Days Pending</th>
+                                                                    <th>Priority Level</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{#topAuditors}}
+                                                                <tr>
+                                                                    <td>{{rank}}</td>
+                                                                    <td>{{name}}</td>
+                                                                    <td>{{location}}</td>
+                                                                    <td>{{pendingQuestions}}</td>
+                                                                    <td>{{daysPending}}</td>
+                                                                    <td class="priority-{{priorityClass}}">
+                                                                        {{priorityLevel}}</td>
+                                                                </tr>
+                                                                {{/topAuditors}}
+                                                            </tbody>
+                                                        </table>
+
+                                                        <div class="analysis-box">
+                                                            <div
+                                                                style="font-weight: bold; margin-bottom: 8px; color: #444;">
+                                                                Auditor Efficiency Analysis</div>
+                                                            <div style="font-size: 13px; line-height: 1.4;">
+                                                                • <strong>Average Audits per Active Auditor:</strong>
+                                                                {{averageAuditsPerAuditor}} audits<br>
+                                                                • <strong>Critical Cases:</strong>
+                                                                {{criticalCasesAuditors}} auditor with 35+ days
+                                                                overdue<br>
+                                                                • <strong>High Priority Cases:</strong>
+                                                                {{highPriorityCasesAuditors}} auditors with 14+ pending
+                                                                audits<br>
+                                                                • <strong>Most Productive Coverage:</strong>
+                                                                {{mostProductiveCoverage}} locations by top auditor<br>
+                                                                • <strong>Workload Distribution:</strong>
+                                                                {{workloadDistribution}} out of {{activeAuditors}}
+                                                                auditors have pending work
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr> -->
+
+                                                <!-- Action Items -->
+                                                <tr>
+                                                    <td style="padding: 0 20px;">
+                                                        <div class="section-header">🎯 IMMEDIATE ACTION ITEMS</div>
+
+                                                        <div
+                                                            style="font-weight: bold; margin: 15px 0 10px; color: #444;">
+                                                            Critical Issues Requiring Immediate Attention</div>
+                                                        {{#criticalIssues}}
+                                                        <div class="action-item">
+                                                            <strong>{{title}}:</strong> {{description}}
+                                                        </div>
+                                                        {{/criticalIssues}}
+
+                                                        <div
+                                                            style="font-weight: bold; margin: 15px 0 10px; color: #444;">
+                                                            Key Performance Indicators</div>
+                                                        {{#keyPerformanceIndicators}}
+                                                        <div class="critical-item">
+                                                            <strong>{{title}}:</strong> {{description}}
+                                                        </div>
+                                                        {{/keyPerformanceIndicators}}
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Footer -->
+                                                <tr>
+                                                    <td style="padding: 20px;">
+                                                        <table cellpadding="0" cellspacing="0" style="margin: 0 auto;"
+                                                            width="90%">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td
+                                                                        style="text-align: center; color: #666; font-size: 12px; padding: 15px 0; border-top: 1px solid #eee;">
+                                                                        <div style="margin-bottom: 10px;">
+                                                                            <strong>Report prepared by:</strong>
+                                                                            RIU<br>
+
+                                                                        </div>
+                                                                        <div style="margin-top: 15px;">
+                                                                            <div style="color:#444; font-weight: 400;">
+                                                                                Best regards,
+                                                                            </div>
+                                                                            <div style="color:#444; font-weight: 400;">
+                                                                                RIU <span
+                                                                                    style="font-size: 10px;">(Reporting
+                                                                                    Intelligence Unit)</span>
+                                                                            </div>
+                                                                            <div style="color:#4a90a4;">
+                                                                                <a
+                                                                                    href="mailto:contact@riu.ai">contact@riu.ai</a>
+                                                                            </div>
+                                                                            <div style="color:#4a90a4;">
+                                                                                <a
+                                                                                    href="https://www.riu.ai/">www.riu.ai</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

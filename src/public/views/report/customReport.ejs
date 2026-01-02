@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+        <style>
+            html {
+            -webkit-print-color-adjust: exact;
+          }
+          @page 
+          { 
+              size: A3 portrait;
+              margin-top:50px;
+              margin-bottom: 50px; 
+              margin-left: 10px;
+          }
+          body{
+            font-family: 'Poppins', sans-serif;
+            
+          }
+          table {
+            border-collapse: collapse;
+            border-bottom: 2px solid rgb(41, 170, 231) !important;
+            margin-top: 5px;
+            width: 100%;
+            font-size: 12px;
+            background: rgb(236, 238, 239) !important;
+            margin: 10px; padding: 0;
+            overflow-x: auto;
+        }
+        th{
+            border-top: 2px solid rgb(41, 170, 231);
+            border-bottom: 2px solid rgb(98, 164, 195);
+            padding: 5px;
+            font-size: medium;
+            font-weight: 200;
+            /* background-color: rgb(47, 106, 143) !important; */
+        }
+        td{
+            border-top: 1px solid rgb(9, 10, 10);
+            border-bottom: 1px solid rgb(9, 10, 10);
+            padding: 5px;
+            font-size: 15px;
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
+            word-break: break-all;
+        }
+        .topicName {
+          border-top: 2px solid rgb(41, 170, 231) !important;
+          border-bottom: 1px solid rgb(98, 164, 195) !important;
+          font-size: 25px;
+          color: rgb(41, 170, 231);
+          text-align: center;
+          padding: 12px;
+          background: rgb(236, 238, 239) !important;
+        }
+
+        .question-title{
+          border-bottom: 1px solid rgb(9, 10, 10);
+          border-top: 1px solid rgb(9, 10, 10);
+          font-size: 18px;
+          color: rgb(41, 170, 231);
+          text-align: left;
+          margin: 0px;
+          padding: 10px;
+        }
+        .single-answer{
+          border-bottom: 1px solid rgb(51, 53, 53);
+          /* border-top: 1px solid rgb(9, 10, 10); */
+          font-size: 15px;
+          display: flex;
+          padding: 8px;
+        }
+        .question-single{
+          width: 50%;
+        }
+        .tabular-title{
+          font-size: 15px;
+          color: rgb(41, 170, 231);
+          padding: 8px;
+
+        }
+        .single-answer:nth-child(odd) {
+          background-color: rgb(236, 238, 239);
+        }
+        .page-break {
+          margin-top  : 40vh;
+        page-break-after: always;
+        text-align: center;
+      }
+        </style>    
+    </head>
+    <body>
+        <div style="width: 85%; margin: 0 7.5%;">
+            <div>
+                <div class="page-break">
+                    <div style="color:black;text-align: center; font-size:xx-large;" ><p><%=companyName%></p></div>
+                    <div><p><%=financial_year_value%></p></div>
+                  </div>
+                <div >
+                    <div><h4 class="topicName" style="margin: 0; padding: 0;">Frameworks</h4></div>
+                    <div><table >
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Framework</th>
+                        </tr >
+                            <% frameworkData.forEach((framework,index) => { %>
+                            <tr style="text-align: center;">
+                                <td><%=index+1%></td>
+                                <td><%=framework.title %></td>
+                            </tr>
+                        <% }); %>
+                    </table></div>
+                </div>
+                <div>
+                    <h4 class="topicName" style="margin: 0; padding: 0;">Framework-Topic-Kpi</h4>
+                    <table >
+                        <tr>
+                            <th></th>
+                            <% frameworkData.forEach((framework) => { %>
+                                <th><%= framework?.title %></th>
+                            <% }); %>
+                        </tr>
+                        <% if (Object.keys(topicIdToTopicNameMapping).length > 0) { %>
+                            <% (Object.keys(topicIdToTopicNameMapping)).forEach((topicId) => { %>
+                            <tr>
+                                <td><%=topicIdToTopicNameMapping[topicId]%></td>
+                                <% frameworkData.forEach((framework,index) => { %>
+                                <td style="text-align: center;">
+                                    <% try{ %>
+                                        <%=topicIdToKpiDataMapping[topicId][framework.id]['title'] %>
+                                    <% }catch(error){ %>
+                                        -
+                                    <% } %>
+                                </td>
+                                <% }); %>
+                            </tr>
+                        <% })}; %>
+                    </table>
+                </div>
+                <% let singleAnswerQuestions = ["qualitative", "yes_no", "quantitative"],serialNoToQuestionIdMapping={}; %>
+                <% if (Object.keys(mainJson).length > 0) { %>
+                    <% let counter=1; %>
+                    <div style="text-align: left;margin-top: 20px;">
+                    <% Object.keys(mainJson).forEach((heading) => { %>
+                            <p class="question-title"><b><%=  heading %></b></p>
+                            <% Object.keys(mainJson[heading]).forEach((quesId) => { %>
+                                <%  let questionDetail = mainJson[heading][quesId]; %>
+                                <% serialNoToQuestionIdMapping[quesId] = counter;%>
+                                
+                                <% if (singleAnswerQuestions.includes(questionDetail["questionType"])) { %>
+                                    <div class="single-answer"><div class="question-single"><%=counter++ %> . <%= questionDetail["title"] %></div><div  class="question-single"><%= questionDetail["Answer"] %></div></div>
+                                <% } else if (questionDetail["questionType"] === "tabular_question") { %>
+                                    <div class="tabular-title"><%=counter++ %> . <%= questionDetail["title"] %></div>
+                                    <% let questionDetails = questionDetail["question_detail"]; %>
+                        
+                                    <% let rows = [],header=['']; %>
+                                    <% let answerRows = []; %>
+                                    <% let rowCounter = 0; %>
+                                    <% questionDetails.forEach((detail) => {  %>
+                                    <%   if (detail["option_type"] === "row") { %>
+                                        <%     rows.push(detail["option"]); %>
+                                        
+                                        <%  rowCounter++; %>
+                                    <%   } else { %>
+                                    <%     header.push(detail["option"]); %>
+                                    <%   } %>
+                                    <% }); %>
+                    
+                                   
+                                    <% if (questionDetail["Answer"]) { %>
+                                        <% let combinedAnswers = questionDetail['Answer'] %>
+                                        <% for (let i = 0; i < combinedAnswers.length; i++) { %>
+                                          <%let answerObj = combinedAnswers[i];%>
+                                          <!-- <div><%=answerObj['email']%></div> -->
+                                          <%if(combinedAnswers.length > 1){%>
+                                            <div class="tabular-title"><%=serialNoToQuestionIdMapping[quesId]%>.<%=i+1%></div>
+                                        <% } %>
+                                          <table >
+                                            <tr>
+                                              <% let isFirstColumn = true; %>
+                                              <% header.forEach((column) => { %>
+                                                 <% if (isFirstColumn) { %>
+                                                     <th style="width: 15% !important;"><%= column %></th>
+                                                     <% isFirstColumn = false; %>
+                                                 <% } else { %>
+                                                     <th><%= column %></th>
+                                                     <% } %>
+                                              <% }); %>
+                                          </tr>
+                                          <% let answerArr = answerObj['answer']; %>
+                                          <% for(let j=0;j < answerArr.length;j++){ %>
+                                            <% if(answerArr[j]){ %>
+                                              <tr>
+                                                <td><%= rows[j] %></td>
+                                                <% for(let k=1;k < header.length ;k++){ %>
+                                                  <td>
+                                                    <% try{ %>
+                                                      <%= answerArr[j][k-1]; %>
+                                                    <% }catch(e){ %>
+                                                        <%= '' %>
+                                                    <% } %>
+                                                  </td>
+                                                <% } %>
+                                              </tr>
+                                            <% } %>
+                                          <% } %>
+                                          </table>
+                                        <% } %>
+          
+                                    <% } %>
+
+                                    
+
+
+
+                                <% } else { %>
+                                    <div class="tabular-title"><%=counter++%> . <%= questionDetail["title"] %></div>
+                                    <% let questionDetails = questionDetail["question_detail"]; %>
+                                    <% let meterUnit = questionDetails[0]["option"]; %>
+                        
+                                    <% let headers = ["from_date","to_date","source","process","note","reading_value"]; %>
+                        
+                                    <% let rows = []; %>
+                                    <% if (questionDetail["Answer"]) { %>
+                                    <% let answerArray = questionDetail["Answer"]; %>
+                                    <% rows = answerArray.map((answer) => { %>
+                                        <% let meter_name = meterIdToNameObject[answer["meter_id"]]; %> 
+                                       <% return [
+                                        answer["from_date"],
+                                        answer["to_date"],
+                                        meter_name,
+                                        answer["process"],
+                                        answer["note"],
+                                        answer["reading_value"] + " " + meterUnit,
+                                        ];
+                                    }); %>
+                                    <% } %>
+                                    <table>
+                                    <tr>
+                                        <% headers.forEach((column) => { %>
+                                            <th><%= column %></th>
+                                        <% }); %>
+                                    </tr>
+                                    <% if (rows.length > 0) { %>
+                                        <% rows.forEach((row) => { %>
+                                        <tr>
+                                        <% row.forEach(cell=>{ %>
+                                            <td><%=cell %></td>
+                                        <% }) %>
+                                        <% }); %>
+                                        </tr>
+                                    <% }; %>
+                                </table>
+                                <% } %>
+                                
+                               
+                             <% }); %>
+                             <% }); %>
+                            </div>
+                <% } %>
+                    
+                <div>
+                    <h3 class="topicName" style="margin: 0; padding: 0;">Question - Framework</h3>
+                    <table >
+                        <tr>
+                            <th>Q. No.</th>
+                            <% frameworkData.forEach((framework) => { %>
+                                <th><%= framework?.title %></th>
+                            <% }); %>
+                        </tr>
+                    <% Object.keys(mainJson).forEach((heading) => { %>
+
+                        <% Object.keys(mainJson[heading]).forEach((quesId) => { %>
+                            <%  let frameworks = questionIdToFrameworkMapping[quesId]; %>
+                            
+                            <tr style="text-align: center;">
+                                <td><%= serialNoToQuestionIdMapping[quesId] %></td>
+                                <% frameworkData.forEach((framework,index) => { %>
+                                    <td>
+                                        <% if(frameworks.includes(framework.id)){ %>
+                                            YES
+                                        <% }else{ %>
+                                            NO
+                                        <% } %>
+                                    </td>
+                                <% }); %>
+                            </tr>
+                            
+                        <% }); %>
+                     <% }); %>
+
+                    </table>
+                </div>
+
+
+
+
+
+
+
+
+
+               
+             </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to RIU</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        background-color: rgba(245, 245, 245, 1);
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .container img {
+        max-width: 60%;
+        height: auto;
+        margin-bottom: 15px;
+      }
+
+      .header {
+        font-size: 20px;
+        text-align: left;
+        margin-bottom: 12px;
+      }
+
+      .subheader {
+        font-size: 20px;
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .content {
+        margin-bottom: 20px;
+        font-size: 0.8em;
+      }
+
+      .login-info {
+        border: 2px solid rgba(63, 136, 165, 1);
+        color: rgba(63, 136, 165, 1);
+        padding: 10px;
+        margin-bottom: 2.2em;
+        border-radius: 0.5em;
+      }
+
+      .login-button {
+        background-color: rgba(63, 136, 165, 1);
+        color: white;
+        padding: 20px 40px;
+        border: 1px solid rgba(63, 136, 165, 1);
+        border-radius: 50px;
+        font-size: 20px;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+
+      .login-button:hover {
+        background-color: #ff743c;
+        border: 1px solid #ff743c;
+      }
+
+      .support {
+        margin-bottom: 1rem;
+        font-size: 0.8em;
+      }
+
+      .support div {
+        margin: 5px 0;
+      }
+
+      .support a {
+        color: #00796b;
+        text-decoration: none;
+      }
+
+      .support a:hover {
+        text-decoration: underline;
+      }
+
+      .mainlogo {
+        margin-top: 2em;
+        margin-bottom: 2em;
+      }
+
+      .login-inf {
+        text-align: left;
+      }
+
+      .Fotter {
+        text-align: left;
+        margin-top: 20px;
+      }
+
+      .head {
+        text-align: left;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+
+      .login-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 5px;
+      }
+
+      .login-foot {
+        border: 1px solid rgba(63, 136, 165, 1);
+        border-radius: 0.6em;
+        padding: 1em;
+        color: rgba(63, 136, 165, 1);
+        text-align: left;
+        height: auto;
+      }
+
+      .join-btn {
+        text-align: left;
+      }
+
+      .list {
+        font-size: 15px;
+        text-align: left;
+        color: #3f88a5;
+      }
+
+      li {
+        margin-bottom: 20px;
+      }
+
+      h6 {
+        font-size: 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Centering table wrapper -->
+    <table
+      role="presentation"
+      style="width: 100%; height: 100%; margin: 0; padding: 0; background-color: #f0f0f0;"
+    >
+      <tr>
+        <td align="center" style="padding: 20px 0;">
+          <div class="container">
+            <div class="image">
+              <img
+                alt="robot picture"
+                src="https://riu-bucket.s3.ap-south-1.amazonaws.com/uploads/Social%2012.pngSocial%2012.png"
+              />
+            </div>
+            <div class="header"><b>Dear User,</b></div>
+            <div class="subheader">
+              I hope this message finds you well. As part of our continuous
+              development initiatives, I am pleased to invite you to an upcoming
+              training session. This training will help enhance your skills and
+              keep you updated with the latest industry practices.
+            </div>
+            <div class="head">
+              <div>Please find the details below:</div>
+            </div>
+            <div class="list">
+              <li>Training Topic: {{topicTitle}}</li>
+              <li>Date: {{date}}</li>
+              <li>Time: {{time}}</li>
+              <li>
+                Location:
+                <a href="{{mettingLink}}" target="_blank">{{mettingLink}}</a>
+              </li>
+            </div>
+            <div class="join-btn mt-4 mb-5" style="text-align: center;">
+                <a
+                  class="name"
+                  style="
+                    border-radius: 4px;
+                    color: #fff;
+                    background-color: rgba(63, 136, 165, 1);
+                    padding: 12px 60px;
+                    text-decoration: none;
+                  "
+                  href="{{url}}"
+                >
+                  <span>Login</span>
+                </a>
+              </div>
+
+            <div class="Fotter mt-4">
+              <div>
+                Your participation is highly encouraged, as this session will be
+                valuable for your professional growth.
+              </div>
+              <div class="Fotter mt-4">Looking forward to seeing you there!</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
